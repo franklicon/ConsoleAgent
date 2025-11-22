@@ -56,3 +56,6 @@ nunit-*.xml
 # JetBrains IDE
 .idea/
 *.DotSettings.user
+
+# Env variables
+.env
