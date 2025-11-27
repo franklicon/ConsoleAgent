@@ -12,7 +12,9 @@ public static class ChatAgent
 
         List<ChatMessage> history = [
             new ChatMessage (ChatRole.System, 
-                "You are a helpful CLI assistant. Use the provided functions when appropriate.")
+                "You are a helpful CLI assistant. Use the provided functions when appropriate." +
+                "If a tool call fails due to some invalid arguments, then make an attempt to fix the arguments yourself" +
+                "using your best judgment, then try to call the tool again.")
         ];
 
         Console.WriteLine("Ask me anything (empty = exit)");
