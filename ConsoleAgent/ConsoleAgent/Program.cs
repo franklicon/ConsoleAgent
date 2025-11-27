@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 DotEnv.Load(options: new DotEnvOptions(probeForEnv: true));
 string provider = "openai";
-string model = "gpt-5-mini";
+string model = "gpt-5";
 
 for (int i = 0; i < args.Length; i++)
 {
