@@ -1,11 +1,22 @@
 # ConsoleAgent
 
-A .NET 9 console AI agent demonstrating `Microsoft.Extensions.AI` for orchestrating function calls with multiple AI providers (OpenAI and Google Gemini). The agent can converse and invoke local tools for weather, inventory, and email tasks.
+A lightweight CLI AI agent built with **.NET 9** that utilizes `Microsoft.Extensions.AI` to orchestrate conversations and function calling across multiple providers (OpenAI and Google Gemini).
+
+## Features
+
+- **Multi-Provider**: Native support for **OpenAI** and **Google Gemini** (via `GeminiDotnet`).
+- **Tooling**: Automatic function calling for local services (Weather, Dictionary).
+- **Architecture**: Clean Dependency Injection (DI) setup using the generic Host pattern.
 
 ## Setup
 
-1. Clone the repository.
-2. Create a `.env` file in the `ConsoleAgent` directory with your API keys:
+1. **Clone** the repository.
+2. **Configure Environment**: Create a `.env` file in the project root:
+   ```env
+   OPENAI_API_KEY=sk-...
+   GEMINI_API_KEY=AIza...
+   WEATHER_API_KEY=...
+   ```
 
 ## Usage
 
@@ -16,10 +27,19 @@ Example:
 dotnet run --provider openai --model gtp-5-mini
 ```
 
-## Available Tools
 
-The agent utilizes the following automatically registered functions:
+## Capabilities
 
-- **Weather**: `get_weather` - Checks current weather in a city.
-- **Wardrobe**: `get_clothing_from_wardrobe` - Lists available clothing items.
-- **Email**: `email_friend` - Simulates sending an email to a friend.
+The agent is pre-configured with the following tools:
+
+| Tool | Function | Description |
+| :--- | :--- | :--- |
+| **Weather** | `get_weather` | Fetches current weather for a city. |
+| **Dictionary** | `get_definitions` | Gets multiple definitions for a specified word. |
+
+## Project Structure
+
+- **Program.cs**: CLI argument parsing and Host builder.
+- **Startup.cs**: Service registration (`IChatClient`, `ChatOptions`, `WeatherService`, `DictionaryService`).
+- **FunctionRegistry.cs**: Maps C# methods to AI tools.
+- **ChatAgent.cs**: Handles the main chat loop and history.
