@@ -55,5 +55,7 @@ public static class Startup
             string weatherKey = Environment.GetEnvironmentVariable("WEATHER_API_KEY")!;
             return new WeatherService(weatherKey);
         });
+
+        builder.Services.AddSingleton<DictionaryService>();
     }
 }

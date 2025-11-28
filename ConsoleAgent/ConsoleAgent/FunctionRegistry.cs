@@ -20,6 +20,15 @@ public static class FunctionRegistry
                 Description = "Get the current weather descriptions in a specified city"
             });
 
-       
+        DictionaryService dictionaryService = serviceProvider.GetRequiredService<DictionaryService>();
+        MethodInfo getDefinitionsFunction = typeof(DictionaryService)
+            .GetMethod(nameof(DictionaryService.GetDefinitionsForWord), [typeof(string), typeof(CancellationToken)])!;
+
+        yield return AIFunctionFactory.Create(getDefinitionsFunction, dictionaryService,
+            new AIFunctionFactoryOptions
+            {
+                Name = "get_definitions",
+                Description = "Get multiple definitions for a specified word."
+            });
     }
 }
