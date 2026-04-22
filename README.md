@@ -1,4 +1,4 @@
-# ConsoleAgent
+# Console Agent
 
 A lightweight CLI AI agent built with **.NET 9** that utilizes `Microsoft.Extensions.AI` to orchestrate conversations and function calling across multiple providers (OpenAI and Google Gemini).
 
