@@ -24,7 +24,7 @@ Run the application via CLI, specifying the provider and model if needed (defaul
 
 Example: 
 ```bash
-dotnet run --provider openai --model gtp-5-mini
+dotnet run --provider openai --model gpt-5-mini
 ```
 
 
